@@ -30,7 +30,30 @@ void showMapCampus(float graph[LENGTH_GRAPH][LENGTH_GRAPH]){
 	printf("\t=============================\n\n");
 }
 
-void smallerDistance(float graph[LENGTH_GRAPH][LENGTH_GRAPH]){
+void smallerDistance(float graph[LENGTH_GRAPH][LENGTH_GRAPH]){}
+
+void menuBuilds(){
+	printf("\t=============================\n");
+	printf("\tEDIFICIOS\n");
+	printf("\t=============================\n");
+	printf("\t0 = Laboratorio\n");
+	printf("\t1 = Bloco B\n");
+	printf("\t2 = Bloco A\n");
+	printf("\t3 = Refeitorio\n");
+	printf("\t4 = Biblioteca\n");
+	printf("\t=============================\n");
+}
+
+void existPath(float graph[LENGTH_GRAPH][LENGTH_GRAPH]){
+
+	int build1, build2;
+
+	menuBuilds();
+	printf("\tInforme o primeiro edificio:\n");
+	scanf("%d", &build1);
+	menuBuilds();
+	printf("\tInforme o segundo predio:\n");
+	scanf("%d", &build2);
 
 }
 
@@ -53,6 +76,18 @@ void showConnections(float graph[LENGTH_GRAPH][LENGTH_GRAPH]){
 	printf("\n");
 }
 
+void makeReachability(float reachability[LENGTH_GRAPH][LENGTH_GRAPH]){
+	for(int k=0; k<LENGTH_GRAPH; k++){
+		for(int i=0; i<LENGTH_GRAPH; i++){
+			for(int j=0; j<LENGTH_GRAPH; j++){
+				if(reachability[i][j] > reachability[i][k] + reachability[k][j])
+					reachability[i][j] = reachability[i][k] + reachability[k][j];
+			}
+		}
+	}
+
+}
+
 int main(void)
 {
 	float graph[LENGTH_GRAPH][LENGTH_GRAPH] = {
@@ -62,7 +97,16 @@ int main(void)
 		{0, 0, 190, 0, 280},
 		{0, 0, 160, 280, 0}
 	};
+	float reachability[LENGTH_GRAPH][LENGTH_GRAPH] = {
+		{0, 240, 210, 9999999, 9999999},
+		{240, 0, 9999999, 9999999, 9999999},
+		{210, 9999999, 0, 190, 160},
+		{9999999, 9999999, 190, 0, 280},
+		{9999999, 9999999, 160, 280, 0}
+	};
 	int option = -1;
+
+	makeReachability(reachability);
 
 	do {
 		showMenu(&option);
