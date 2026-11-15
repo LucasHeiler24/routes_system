@@ -66,3 +66,13 @@ Garante que todas as interações com o usuário sejam informativas:
 
 - Sempre exibe o trajeto passo a passo em vez de apenas o valor numérico final.
 - Trata cenários de falha (como rotas inexistentes entre origem e destino isolados), informando o usuário claramente.
+
+# Structure
+.
+├── functions
+│   └── functions.c
+├── headers
+│   └── functions.h
+├── main
+├── main.c
+└── README.md

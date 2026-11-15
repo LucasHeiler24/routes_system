@@ -1,3 +1,5 @@
+// Lucas Heiler
+
 #include <stdio.h>
 #include "./functions/functions.c"
 #define LENGTH_GRAPH 5
