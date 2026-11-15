@@ -68,11 +68,13 @@ Garante que todas as interações com o usuário sejam informativas:
 - Trata cenários de falha (como rotas inexistentes entre origem e destino isolados), informando o usuário claramente.
 
 # Structure
-.
-├── functions
-│   └── functions.c
-├── headers
-│   └── functions.h
-├── main
-├── main.c
-└── README.md
+
+```
+  .
+  ├── functions
+  │   └── functions.c
+  ├── headers
+  │   └── functions.h
+  ├── main
+  ├── main.c
+  └── README.md
