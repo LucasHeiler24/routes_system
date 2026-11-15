@@ -46,6 +46,14 @@ void insert_build(char text[], int *build){
 	do {
 		printf("\t%s\n", text);
 		scanf("%d", build);
+
+		if(*build < 0 || *build > 4) {
+			clear();
+			menu_builds();
+			printf("\tNUMERO NAO EXISTE\n");
+			printf("\tTente novamente!\n");
+			printf("\t==================================\n");
+		} 
 	} while (*build < 0 || *build > 4);
 }
 
@@ -87,6 +95,7 @@ void insert_builds(int *build1, int *build2){
     clear();
 	menu_builds();
 	insert_build("Informe o segundo predio:", build2);
+	clear();
 }
 
 void exist_path(float graph[LENGTH_GRAPH][LENGTH_GRAPH], float reachability[LENGTH_GRAPH][LENGTH_GRAPH], int build1, int build2){
@@ -94,7 +103,8 @@ void exist_path(float graph[LENGTH_GRAPH][LENGTH_GRAPH], float reachability[LENG
 	float distance_build2 = reachability[build2][build1];
 
 	if(distance_build1 == distance_build2){
-		printf("\tExiste caminho entre %s <----> %s, sendo:.....%.2f metros\n", names[build1], names[build2], distance_build1);
+		printf("\tExiste caminho entre %s <----> %s\n", names[build1], names[build2]);
+		printf("\tTotal de metros:.....%.2f metros\n", distance_build1);
 		dijkstra(graph, build1, build2);
 		return;
 	}
@@ -153,7 +163,7 @@ void dijkstra(float graph[LENGTH_GRAPH][LENGTH_GRAPH], int initial, int final){
 	printf("\tCaminhos:......%s", names[final]);
 	for(int i=0; i<LENGTH_GRAPH; i++){
 		if(idx != initial) {
-			printf(" <- %s", names[idxs[idx]]);
+			printf(" <-- %s", names[idxs[idx]]);
 			idx = idxs[idx];
 		} 
 		else break;
